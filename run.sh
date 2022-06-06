@@ -1,3 +1,3 @@
 #!/bin/bash
 
-g++ main.cpp -lGL -lglfw -lGLEW -o main && ./main
+g++ vshader.cpp main.cpp -lGL -lglfw -lGLEW -o main && ./main
