@@ -1,4 +1,4 @@
-#include "vshader.h"
+#include "shader.h"
 #include<GL/glew.h>
 #include<GLFW/glfw3.h>
 #include<iostream>
@@ -13,38 +13,18 @@ using namespace std;
 GLuint rendering_program; 
 GLuint vao[num_vaos]; 
 
-GLuint createShaderProgram() {
-const char *fshaderSource =
-   "#version 430 \n"
-   "out vec4 color; \n"
-   "void main(void) \n"
-   "{ color = vec4(0.0, 0.0, 1.0, 1.0); }";
-
-   GLuint fShader = glCreateShader(GL_FRAGMENT_SHADER);
-
-   vshader v("vert.txt");
-   v.init();
-
-   glShaderSource(fShader, 1, &fshaderSource, NULL);
-
-   glCompileShader(fShader);
-
-   GLuint vfProgram = glCreateProgram();
-
-   glAttachShader(vfProgram, fShader);
-
-   glLinkProgram(vfProgram);
-   
-   return vfProgram;
-}
 
 void initialise(GLFWwindow* window) {
-   rendering_program = createShaderProgram();
+   shader s("frag.txt", "vert.txt");
+   rendering_program = s.init();
    glGenVertexArrays(num_vaos, vao);
    glBindVertexArray(vao[0]);
 }
 void display(GLFWwindow* window, double currentTime) {
+   glClearColor(1.0, 0.0, 0.0, 1.0);
+   glClear(GL_COLOR_BUFFER_BIT);
    glUseProgram(rendering_program);
+   glPointSize(30.0f);
    glDrawArrays(GL_POINTS, 0, 1);
 }
 int main(void) {
@@ -61,9 +41,9 @@ int main(void) {
    initialise(window);
 
    while (!glfwWindowShouldClose(window)) {
-          display(window, glfwGetTime());
-         glfwSwapBuffers(window);
-         glfwPollEvents();
+      display(window, glfwGetTime());
+      glfwSwapBuffers(window);
+      glfwPollEvents();
    }
 
    glfwDestroyWindow(window);
