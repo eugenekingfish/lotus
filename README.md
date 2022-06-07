@@ -1,6 +1,4 @@
-# opengl 
-
-A project that I am writing to learn OpenGL.
+# lotus 
 
 ## Requirements 
 
