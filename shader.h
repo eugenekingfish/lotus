@@ -7,13 +7,12 @@ class shader {
    private:
       const char* frag_path;
       const char* vert_path;
-      GLuint _shader;
-      std::string read_source(const char* path) const;
+      std::string read_source(const char* path);
+      bool check_gl_error() const;
+      void print_log(GLuint shader) const;
 
    public:
       shader(const char* frag_path, const char* vert_path);
       GLuint init();
-      GLuint get_shader() const;
-      void get_log() const;
 
 };
