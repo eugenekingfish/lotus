@@ -55,15 +55,11 @@ GLuint shader::init() {
    GLint vert_compiled, frag_compiled;
 
    std::string v_string = read_source(vert_path);
+   std::string f_string = read_source(frag_path);
    
    const char* vert_source = v_string.c_str();
+   const char* frag_source = f_string.c_str();
    
-   const char* frag_source = 
-		"#version 430 \n"
-		"out vec4 color; \n"
-		"void main(void) \n"
-		"{ color = vec4(0.0, 0.0, 1.0, 1.0); }";
-
    GLuint v_shader = glCreateShader(GL_VERTEX_SHADER);
    GLuint f_shader = glCreateShader(GL_FRAGMENT_SHADER);
 
