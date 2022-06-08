@@ -1,5 +1,3 @@
-#include "glm/glm/ext/matrix_transform.hpp"
-#include "glm/glm/gtc/type_ptr.hpp"
 #include "shader.h"
 #include<GL/glew.h>
 #include<GLFW/glfw3.h>
