@@ -1,4 +1,4 @@
-#include "shader.h"
+#include "headers/shader.h"
 #include <GL/glew.h>
 
 shader::shader(const char* frag_path, const char* vert_path) {

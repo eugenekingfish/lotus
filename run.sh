@@ -1,3 +1,3 @@
 #!/bin/bash
 
-g++ shader.cpp main.cpp -lGL -lglfw -lGLEW -o main && ./main
+g++ window.cpp shader.cpp main.cpp -lGL -lglfw -lGLEW -o main && ./main

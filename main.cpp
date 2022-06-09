@@ -1,5 +1,5 @@
-#include "shader.h"
-#include "window.h"
+#include "headers/shader.h"
+#include "headers/window.h"
 #include<GL/glew.h>
 #include<GLFW/glfw3.h>
 #include<iostream>
