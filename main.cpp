@@ -1,4 +1,5 @@
 #include "shader.h"
+#include "window.h"
 #include<GL/glew.h>
 #include<GLFW/glfw3.h>
 #include<iostream>
@@ -26,32 +27,6 @@ GLuint mv_loc, proj_loc;
 int width, height;
 float aspect;
 glm::mat4 p_mat, v_mat, m_mat, mv_mat;
-
-class window {
-   public:
-      GLFWwindow* window_ptr;
-      window(const int& size_x, const int& size_y, const char* window_title) {
-         if (!glfwInit()) {
-            std::cout << "Failed to initialise GLFW." << std::endl;
-            exit(EXIT_FAILURE); 
-         }
-         glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
-         glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-         this->window_ptr = glfwCreateWindow(size_x, size_y, window_title, NULL, NULL);
-      }
-
-      void init() {
-         glfwMakeContextCurrent(window_ptr);
-         if (glewInit() != GLEW_OK) { exit(EXIT_FAILURE); }
-         glfwSwapInterval(1); // sets the color buffer swap interval (i.e. vsync)
-      }
-
-      void destroy() {
-         glfwDestroyWindow(window_ptr);
-         glfwTerminate();
-      }
-
-};
 
 void init_vertices() {
    float vertex_positions[108] = {
