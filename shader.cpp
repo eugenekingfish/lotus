@@ -91,8 +91,10 @@ GLuint shader::init() {
 
    glAttachShader(vf_program, v_shader);
    glAttachShader(vf_program, f_shader);
-
    glLinkProgram(vf_program);
+
+   glDeleteShader(v_shader);
+   glDeleteShader(f_shader);
 
    return vf_program;
 }
